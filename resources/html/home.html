@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+  <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>vodi me</title>
+  </head>
+  <body>
+
+    <div id="app">
+      <section class="section">
+        <div class="container is-fluid">
+          <div class="content">
+            <h4 class="title">Dobrošli u vodi me portal</h4>
+            <p>Učitava se...</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- scripts and styles -->
+    {% style "/assets/bulma/css/bulma.min.css" %}
+    {% style "/assets/material-icons/css/material-icons.min.css" %}
+    {% style "/css/screen.css" %}
+
+    <script type="text/javascript">
+        var csrfToken = "{{csrf-token}}";
+    </script>
+    {% script "/js/app.js" %}
+    <script type="text/javascript">
+      (function() {
+        var burger = document.querySelector('.burger');
+        var nav = document.querySelector('#'+burger.dataset.target);
+        burger.addEventListener('click', function(){
+        burger.classList.toggle('is-active');
+        nav.classList.toggle('is-active');
+        });
+      })();
+    </script>
+  </body>
+</html>
