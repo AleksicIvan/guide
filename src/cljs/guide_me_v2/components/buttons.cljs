@@ -127,7 +127,7 @@
           :value (:city @fields)
           :on-change #(swap! fields assoc :city (.. % -target -value))}]]]
       [:div.field
-       [:div.label "email"]
+       [:div.label "Email"]
        [:div.control
         [:input.input
          {:type "email"
@@ -151,7 +151,7 @@
           :on-key-down #(when (= (.-keyCode %) 13)
                           (do-register))}]]]]
 									;; Footer
-     [:button.button.is-primary.is-fullwidth
+     [:button.button.is-primary.is-fullwidth.has-background-black.has-text-white
       {:on-click do-register
        :disabled (or (string/blank? (:login @fields))
                      (string/blank? (:first_name @fields))
@@ -160,7 +160,7 @@
                      (string/blank? (:email @fields))
                      (string/blank? (:pass @fields))
                      (string/blank? (:confirm @fields)))}
-      "Create Account"]]))
+      "OK"]]))
 
 
 (defn logout-button []
