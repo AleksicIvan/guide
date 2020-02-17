@@ -26,7 +26,8 @@ You will need [Leiningen][1] 2.0 or above installed as well as Postgres DB 12. A
 
 ## Running
 
-In order to run this you need to create a database guide-me-v2 in postgres.
+In order to run this you need to create a database in postgres. Update dev-config.edn and test-config.edn with adequate database link.
+
 Then run:
     
     lein run migrate
