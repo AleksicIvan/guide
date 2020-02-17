@@ -12,6 +12,7 @@
    [ring.util.http-response :refer :all]
    [clojure.java.io :as io]
    [guide-me-v2.auth :as auth]
+   [guide-me-v2.rules :as rules]
    [spec-tools.data-spec :as ds]))
 
 (defn service-routes []
@@ -37,20 +38,20 @@
                  multipart/multipart-middleware]}
 
    ["/session"
-   	{:get
-   		{:responses
-   			{200
-   				{:body
-   					{:session
-   						{:identity
-   							(ds/maybe
-   								{:login string?})}}}}
-   				:handler
-   					(fn [{{:keys [identity]} :session}]
-   						(ok {:session
-														{:identity
-															(not-empty
-																(select-keys identity [:login]))}}))}}]
+    {:get
+     {:responses
+      {200
+       {:body
+        {:session
+         {:identity
+          (ds/maybe
+           {:login string?})}}}}
+      :handler
+      (fn [{{:keys [identity]} :session}]
+        (ok {:session
+             {:identity
+              (not-empty
+               (select-keys identity [:login]))}}))}}]
 
    ;; swagger documentation
    ["" {:no-doc true
@@ -64,6 +65,20 @@
      {:get (swagger-ui/create-swagger-ui-handler
             {:url "/api/swagger.json"
              :config {:validator-url nil}})}]]
+   
+   ["/rules"
+    {:post {:parameters
+            {:body
+             {:type string?
+              :place string?}}
+            :responses
+            {200
+             {:body
+              {:rules
+               {:result string?}}}}
+            :handler (fn [{{{:keys [type place]} :body} :parameters}]
+                       (let [rule (get-in (first (rules/running-clara type place)) [:?rule-result :result])]
+                         (ok {:rules {:result rule}})))}}]
 
    ["/login"
     {:post {:parameters
@@ -125,12 +140,12 @@
                        {:message
                         "Registration failed! User with login already exists!"})
                       (throw e))))))}}]
-    ["/logout"
-	    {:post {:handler
-	            (fn [_]
-	              (->
-	               (ok)
-	               (assoc :session nil)))}}]
+   ["/logout"
+    {:post {:handler
+            (fn [_]
+              (->
+               (ok)
+               (assoc :session nil)))}}]
 
    ["/ping"
     {:get (constantly (ok {:message "pong"}))}]])
