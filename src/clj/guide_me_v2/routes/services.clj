@@ -75,7 +75,7 @@
             {200
              {:body
               {:rules
-               {:result string?}}}}
+               {:result number?}}}}
             :handler (fn [{{{:keys [type place]} :body} :parameters}]
                        (let [rule (get-in (first (rules/running-clara type place)) [:?rule-result :result])]
                          (ok {:rules {:result rule}})))}}]

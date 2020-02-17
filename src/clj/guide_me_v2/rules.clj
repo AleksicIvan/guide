@@ -16,21 +16,21 @@
   [Place (= "Beograd" name)]
   [Type (= "uknjizba-stana" label)]
   =>
-  (insert! (->RuleResult "Mesto is Beograd and type is uknjizba-stana and now we can return some solution")))
+  (insert! (->RuleResult 113)))
 
 (defrule is-place-belgrade-is-type-porez-na-dohodak
   "Place is Belgrade, type is porez-na-dohodak"
   [Place (= "Beograd" name)]
   [Type (= "porez-na-dohodak" label)]
   =>
-  (insert!( ->RuleResult "Mesto is Beograd and type is porez-na-dohodak and now we can return some solution")))
+  (insert!( ->RuleResult 112)))
 
 (defrule is-place-belgrade-is-type-registracija-auta
   "Place is Belgrade, type is registracija-auta"
   [Place (= "Beograd" name)]
   [Type (= "registracija-auta" label)]
   =>
-  (insert!( ->RuleResult "Mesto is Beograd and type is registracija-auta and now we can return some solution")))
+  (insert!( ->RuleResult 111)))
 
 ; Uzice
 (defrule is-place-uzice-is-type-uknjizba-stana
@@ -38,21 +38,21 @@
   [Place (= "Užice" name)]
   [Type (= "uknjizba-stana" label)]
   =>
-  (insert! (->RuleResult "Mesto is Užice and type is uknjizba-stana and now we can return some solution")))
+  (insert! (->RuleResult 313)))
 
 (defrule is-place-uzice-is-type-porez-na-dohodak
   "Place is Užice, type is porez-na-dohodak"
   [Place (= "Užice" name)]
   [Type (= "porez-na-dohodak" label)]
   =>
-  (insert! (->RuleResult "Mesto is Užice and type is porez-na-dohodak and now we can return some solution")))
+  (insert! (->RuleResult 312)))
 
 (defrule is-place-uzice-is-type-registracija-auta
   "Place is Užice, type is registracija-auta"
   [Place (= "Užice" name)]
   [Type (= "registracija-auta" label)]
   =>
-  (insert! (->RuleResult "Mesto is Užice and type is registracija-auta and now we can return some solution")))
+  (insert! (->RuleResult 311)))
 
 ; Zajecar
 (defrule is-place-zajecar-is-type-uknjizba-stana
@@ -60,21 +60,21 @@
   [Place (= "Zaječar" name)]
   [Type (= "uknjizba-stana" label)]
   =>
-  (insert! (->RuleResult "Mesto is Zaječar and type is uknjizba-stana and now we can return some solution")))
+  (insert! (->RuleResult 193)))
 
 (defrule is-place-zajecar-is-type-porez-na-dohodak
   "Place is Zaječar, type is porez-na-dohodak "
   [Place (= "Zaječar" name)]
   [Type (= "porez-na-dohodak" label)]
   =>
-  (insert! (->RuleResult "Mesto is Zaječar and type is porez-na-dohodak and now we can return some solution.")))
+  (insert! (->RuleResult 192)))
 
 (defrule is-place-zajecar-is-type-registracija-auta
   "Place is Zaječar, type is registracija-auta"
   [Place (= "Zaječar" name)]
   [Type (= "registracija-auta" label)]
   =>
-  (insert! (->RuleResult "Mesto is Zaječar and type is registracija auta and now we can return some solution.")))
+  (insert! (->RuleResult 191)))
 
 (defquery get-answer
   []

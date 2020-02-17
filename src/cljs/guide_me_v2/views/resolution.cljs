@@ -3,6 +3,7 @@
    [day8.re-frame.http-fx]
    [re-frame.core :as rf]
    [guide-me-v2.helpers :refer [redirect!]]
+   [guide-me-v2.components.answer :refer [render-answer]]
    [guide-me-v2.store.subs]
    [guide-me-v2.store.events]))
 
@@ -31,5 +32,5 @@
             [:div.column.is-one-fifth
              [:img.image.is-32x32 {:src "/img/046-office-building.svg"}]]
             [:div.column (:place rule)]]
-           [:p (:result rule)]]]]])
+           [render-answer (:result rule)]]]]])
      (redirect! "/"))])
