@@ -22,8 +22,8 @@
                  middleware/wrap-formats
                  middleware/wrap-restricted
                  ]}
-   ["/tip/:tip" {:get where-page}]
-   ["/tip/:tip/mesto/:mesto/rezultat" {:get result-page}]
+   ["/usluga/:tip" {:get where-page}]
+   ["/usluga/:tip/mesto/:mesto/rezultat" {:get result-page}]
    ])
 
 (defn home-route []
