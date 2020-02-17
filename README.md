@@ -1,7 +1,8 @@
 # guide (vodi§ in Serbian)
 
-Vodi§ is a lightweight represenatation of a expert system that should provide some assistance and guidence in a legal matters such as registration of a real estate, paying taxes or registering a car. In its core the app is using [Clara-rules][2], expert system implemeneted in clojure programming language.
-Being a prototype this is just a glimpse of possible features that this app could provide. Basically, user starts with a  login/register screen, after that you are given a choice of selecting a type of service, than user chooses a city/town. In the end after expert system checks its knowledge base and delievers a rule user is presented a answer/result page with required information.
+Vodi§ is a lightweight represenatation of an expert system that should provide some assistance and guidance in legal matters such as registration of a real estate, paying taxes or registering a vehicle. In its core the app is using [Clara-rules][2], expert system implemeneted in clojure programming language. Being a prototype, this is just a glimpse of possible features that this app could provide.   
+
+Basically, user starts with a  login/register screen, after which they are given a choice of selecting type of service, followed by the option to choose a city/town. In the end after expert system checks its knowledge base and delievers a rule, user is presented with an answer/result page containing required information.
 
 Screen shots of app flow can be found [here][1].
 
@@ -13,7 +14,7 @@ An excellent lecture on a rule-based expert system by late MIT Professor Patrick
 
 ## Prerequisites
 
-You will need [Leiningen][1] 2.0 or above installed as well as Postgres DB 12. Also, app was build using following libraries/dependencies among others: 
+You will need [Leiningen][1] 2.0 or above installed as well as Postgres DB 12. Also, the app was built using following libraries/dependencies among others: 
 [Luminus][2], [funcool auth library][3], [Cheshire][4], [all Metosin's libraries][5], [re-frame][6] and [reagent][7]
 
 [1]: https://github.com/technomancy/leiningen
@@ -26,7 +27,7 @@ You will need [Leiningen][1] 2.0 or above installed as well as Postgres DB 12. A
 
 ## Running
 
-In order to run this you need to create a database in postgres. Update dev-config.edn and test-config.edn with adequate database link.
+In order to run app you need to create a database in postgres. Update dev-config.edn and test-config.edn with adequate database link.
 
 Then run:
     
