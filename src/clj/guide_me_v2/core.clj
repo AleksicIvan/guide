@@ -7,7 +7,6 @@
    [guide-me-v2.config :refer [env]]
    [clojure.tools.cli :refer [parse-opts]]
    [clojure.tools.logging :as log]
-   [clara.rules :refer :all]
    [mount.core :as mount])
   (:gen-class))
 
@@ -48,29 +47,7 @@
     (log/info component "stopped"))
   (shutdown-agents))
 
-(defrecord SupportRequest [client level])
-
-(defrecord ClientRepresentative [name client])
-
-(defrule is-important
-  "Find important support requests."
-  [SupportRequest (= :high level)]
-  =>
-  (println "High support requested!"))
-
-(defrule notify-client-rep
-  "Find the client representative and request support."
-  [SupportRequest (= ?client client)]
-  [ClientRepresentative (= ?client client) (= ?name name)]
-  =>
-  (println "Notify" ?name "that"
-           ?client "has a new support request!"))
-
 (defn start-app [args]
-  (-> (mk-session 'guide-me-v2.core)
-      (insert (->ClientRepresentative "Alice" "Acme")
-              (->SupportRequest "Acme" :high))
-      (fire-rules))
   (doseq [component (-> args
                         (parse-opts cli-options)
                         mount/start-with-args
