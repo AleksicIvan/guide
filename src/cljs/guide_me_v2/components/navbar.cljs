@@ -17,7 +17,7 @@
      [:a.navbar-item.has-text-white
       {:href "/"
        :style {:font-weight "bold"}}
-      "§_vodič"]
+      "vodi§"]
      [:span.navbar-burger.burger
       {:data-target "nav-menu"}
       [:span]

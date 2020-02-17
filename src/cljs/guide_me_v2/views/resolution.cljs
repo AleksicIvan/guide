@@ -14,7 +14,7 @@
     " "))
 
 (defn resolution-page []
-  [:section.section>div.container.is-fluid>div.content
+  [:section#section.section>div.container.is-fluid>div.content
    (if @(rf/subscribe [:auth/user])
      (let [route @(rf/subscribe [:route])
            rule @(rf/subscribe [:rule])]

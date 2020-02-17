@@ -10,14 +10,16 @@
    (:session/loading? db)))
 
 (rf/reg-sub
- :session/rule
- (fn [db _]
-   (:session/rule db)))
-
-(rf/reg-sub
  :rule
  (fn [db _]
    (:rule db)))
+
+
+(rf/reg-sub
+ :route
+ (fn [db _]
+   (:route db)))
+
 
 (rf/reg-sub
  :auth/user

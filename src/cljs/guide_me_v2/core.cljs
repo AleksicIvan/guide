@@ -1,6 +1,5 @@
 (ns guide-me-v2.core
   (:require
-   [ajax.core :refer [POST]]
    [day8.re-frame.http-fx]
    [reagent.core :as r]
    [re-frame.core :as rf]
@@ -9,8 +8,8 @@
   ;  [markdown.core :refer [md->html]]
    [guide-me-v2.ajax :as ajax]
    [guide-me-v2.components.navbar :refer [navbar]]
+   [guide-me-v2.components.breadcrumbs :refer [breadcrumbs]]
    [reitit.core :as reitit]
-   [guide-me-v2.helpers :refer [redirect!]]
    [guide-me-v2.store.subs]
    [guide-me-v2.store.events]
    [guide-me-v2.views.home :refer [home-page]]
@@ -28,6 +27,7 @@
 (defn page []
   [:div
    [navbar]
+   [breadcrumbs]
    [(pages @(rf/subscribe [:page]))]])
 
 ;; -------------------------

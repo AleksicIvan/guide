@@ -11,27 +11,24 @@
 (def md-mobile? (js/window.md.mobile))
 
 (defn image-component [src]
-  (log "md" js/window.md)
-  (log "md.mobile()" (js/window.md.mobile))
   (if (js/window.md.mobile)
     [:img.image.is-48x48 {:src src}]
     [:figure.container
-     [:img.image.is-48x48 {:src src}]]))
+     [:img.image.is-64x64 {:src src}]]))
 
 (defn not-logged-in []
  [:div
   [:section.hero
    [:div
     [:div.container.is-mobile.is-centered.has-text-centered
-     [:div
-      ; [:img.image {:src "/img/kiosk.png"}]
+     [:div#heading
       [:h3 "Kroz džunglu propisa, šaltera i papira potreban Vam je pouzdan vodič."]]
      [:br]
      [:div.columns.is-mobile.is-centered
+      [:div.column.is-pulled-right
+       [:div.is-pulled-right [login-button]]]
       [:div.column
-       [login-button]]
-      [:div.column
-       [register-button]]]
+       [:div.is-pulled-left [register-button]]]]
      [:br]
      [:div.columns.is-mobile.is-centered
       [:div.column
@@ -60,7 +57,7 @@
        [image-component "/img/041-tape.svg"]]]]]]])
 
 (defn home-page []
-  [:section.section>div.container.is-fluid>div.content
+  [:section#section.section>div.container.is-fluid>div.content
    (if @(rf/subscribe [:auth/user])
      (when-let [user @(rf/subscribe [:auth/user])]
        [:div
@@ -68,13 +65,18 @@
          [:div.hero-body
           [:div.container
            [:h3 "Dobro došli " (:login user) ", "]
-           [:div
-            [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "registracija-auta"]))
-                        :href "#/usluga/registracija-auta"}
-             "registrujte auto"]
-            [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "porez-na-dohodak"]))
-                        :href "#/usluga/porez-na-dohodak"} "platite porez"]
-            [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "uknjizba-stana"]))
-                        :href "#/usluga/uknjizba-stana"} "uknjižite stan"]]]]]])
+           [:ul.no-bullet
+            [:li 
+             [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "registracija-auta"]))
+                         :href "#/usluga/registracija-auta"}
+              "registrujte auto"]]
+            [:li
+             [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "porez-na-dohodak"]))
+                         :href "#/usluga/porez-na-dohodak"} 
+              "platite porez"]]
+            [:li
+             [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "uknjizba-stana"]))
+                         :href "#/usluga/uknjizba-stana"} 
+              "uknjižite stan"]]]]]]])
     [not-logged-in])])
 

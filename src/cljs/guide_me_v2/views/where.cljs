@@ -8,7 +8,7 @@
    [guide-me-v2.store.events]))
 
 (defn where-page []
-  [:section.section>div.container.is-fluid>div.content
+  [:section#section.section>div.container.is-fluid>div.content
    (if @(rf/subscribe [:auth/user])
      (when-let [rule @(rf/subscribe [:rule])]
        [:div
