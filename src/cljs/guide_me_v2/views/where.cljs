@@ -21,7 +21,6 @@
                                       {:headers {"Accept" "application/transit+json"}
                                        :params {:type (get-in rule [:type]) :place "Beograd"}
                                        :handler (fn [response]
-                                                  (println "response for Belgrade" (get-in response [:rules :result]))
                                                   (rf/dispatch [:rule/add-place "Beograd"])
                                                   (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
                          :href (str "#/usluga/" (:type rule) "/mesto/beograd/rezultat")} "Beograd"]]
@@ -30,7 +29,6 @@
                                       {:headers {"Accept" "application/transit+json"}
                                        :params {:type (get-in rule [:type]) :place "Užice"}
                                        :handler (fn [response]
-                                                  (println "response for Užice" (get-in response [:rules :result]))
                                                   (rf/dispatch [:rule/add-place "Užice"])
                                                   (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
                          :href (str "#/usluga/" (:type rule) "/mesto/uzice/rezultat")} "Užice"]]
@@ -39,7 +37,6 @@
                                       {:headers {"Accept" "application/transit+json"}
                                        :params {:type (get-in rule [:type]) :place "Zaječar"}
                                        :handler (fn [response]
-                                                  (println "response for Zaječar" (get-in response [:rules :result]))
                                                   (rf/dispatch [:rule/add-place "Zaječar"])
                                                   (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
                          :href (str "#/usluga/" (:type rule) "/mesto/zajecar/rezultat")} "Zaječar"]]]]]]])

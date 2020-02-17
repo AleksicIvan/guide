@@ -2,7 +2,7 @@ html,
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 @font-face {
   font-family: 'Material Icons';
@@ -41,7 +41,7 @@ body {
 
 .footer {
   position: fixed;
-  height: 20px;
+  height: 50px;
   background-color: black;
   bottom: 0px;
   left: 0px;
@@ -81,4 +81,9 @@ body {
 
 #heading {
   margin-top: 20px !important;
+}
+
+.clear {
+  clear: both;
+  height: 60px;
 }

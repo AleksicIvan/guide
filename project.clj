@@ -1,7 +1,6 @@
-(defproject guide-me-v2 "0.1.0-SNAPSHOT"
+(defproject guide-me-v2 "1.0.0"
 
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "The project was developed in order to pass Software Engineering Tools and Methodology exam on Software Engineering and Computer Sciences at the Faculty of Organization Sciences, University of Belgrade, Serbia, Software Engineering Master's studies."
 
   :dependencies [[buddy/buddy-auth "2.2.0"]
                  [buddy/buddy-core "1.6.0"]
