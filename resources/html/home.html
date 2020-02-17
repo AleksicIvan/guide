@@ -3,7 +3,8 @@
   <head>
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>vodi me</title>
+      <title>§_vodič  | Pomoć na putu kroz džunglu propisa, šaltera i papira</title>
+      <script src="/js/mobile-detect.js"></script>
   </head>
   <body>
 
@@ -11,8 +12,7 @@
       <section class="section">
         <div class="container is-fluid">
           <div class="content">
-            <h4 class="title">Dobrošli u vodi me portal</h4>
-            <p>Učitava se...</p>
+            <h4 class="title"> <i>§_vodič</i> portal se učitava...</h4>
           </div>
         </div>
       </section>
@@ -23,9 +23,17 @@
     {% style "/assets/material-icons/css/material-icons.min.css" %}
     {% style "/css/screen.css" %}
 
+
+    <footer class="footer has-background-black has-text-white has-text-centered">
+      <p>Handcrafted with &#9829; by Ivan Aleksić</p>
+      <p style="font-size: x-small;"><small>Icons made by <a style="color:white;" href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a style="color:white;" href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small></p>
+    </footer>
     <script type="text/javascript">
         var csrfToken = "{{csrf-token}}";
     </script>
+    <script>
+      var md = new MobileDetect(window.navigator.userAgent);
+  </script>
     {% script "/js/app.js" %}
     <script type="text/javascript">
       (function() {
