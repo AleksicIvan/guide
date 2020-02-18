@@ -50,8 +50,7 @@
       (fn [{{:keys [identity]} :session}]
         (ok {:session
              {:identity
-              (not-empty
-               (select-keys identity [:login]))}}))}}]
+              identity}}))}}]
 
    ;; swagger documentation
    ["" {:no-doc true

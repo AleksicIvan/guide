@@ -28,6 +28,6 @@
             nil)
           (if (and (get-in route [:path-params :tip]) (get-in route [:path-params :mesto]))
             [:li
-             [:a.section-breadcrumb-a {:href (str "#/usluga/" (get-in route [:path-params :tip]) "/mesto" (get-in route [:path-params :place]))} "Rezultat"]]
+             [:a.section-breadcrumb-a {:href "javascript:void(0)"} "Rezultat"]]
             nil)]]]])
     nil))

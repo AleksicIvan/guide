@@ -1,7 +1,9 @@
 (ns guide-me-v2.views.home
   (:require
+   [ajax.core :refer [POST]]
    [day8.re-frame.http-fx]
    [re-frame.core :as rf]
+   [guide-me-v2.helpers :refer [get-city-from-user is-city-we-have-data]]
    [guide-me-v2.store.subs]
    [guide-me-v2.components.buttons :refer [login-button register-button]]
    [guide-me-v2.store.events]))
@@ -59,24 +61,113 @@
 (defn home-page []
   [:section#section.section>div.container.is-fluid>div.content
    (if @(rf/subscribe [:auth/user])
-     (when-let [user @(rf/subscribe [:auth/user])]
-       [:div
-        [:section.hero
-         [:div.hero-body
-          [:div.container
-           [:h3 "Dobro došli " (:login user) ", "]
-           [:ul.no-bullet
-            [:li
-             [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "registracija-auta"]))
-                         :href "#/usluga/registracija-auta"}
-              "registrujte auto"]]
-            [:li
-             [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "porez-na-dohodak"]))
-                         :href "#/usluga/porez-na-dohodak"}
-              "platite porez"]]
-            [:li
-             [:a.button {:on-click (fn [] (rf/dispatch [:rule/add-type "uknjizba-stana"]))
-                         :href "#/usluga/uknjizba-stana"}
-              "uknjižite stan"]]]]]]])
+     (let [rule @(rf/subscribe [:rule])]
+       (when-let [user @(rf/subscribe [:auth/user])]
+         [:div
+          [:section.hero
+           [:div.hero-body
+            [:div.container
+             [:h3 "Dobro došli " (:login user) ", "]
+             [:ul.no-bullet
+              [:li
+               (if (= (:type rule) "registracija-auta")
+                 [:a.button.has-text-white.has-background-black
+                  {:on-click (let [city (get-city-from-user user)
+                                   should-do-post (is-city-we-have-data city)]
+                               (if should-do-post
+                                 #(POST "/api/rules"
+                                    {:headers {"Accept" "application/transit+json"}
+                                     :params {:type "registracija-auta" :place city}
+                                     :handler (fn [response]
+                                                (rf/dispatch [:rule/add-type "registracija-auta"])
+                                                (rf/dispatch [:rule/add-place city])
+                                                (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
+                                 (fn [] (rf/dispatch [:rule/add-type "registracija-auta"]))))
+                   :href (if (is-city-we-have-data (get-city-from-user user))
+                           (str "#/usluga/registracija-auta/mesto/" (.toLowerCase (or (get-city-from-user user) " ")) "/rezultat")
+                           "#/usluga/registracija-auta")}
+                  "registrujte auto"]
+                 [:a.button {:on-click (let [city (get-city-from-user user)
+                                             should-do-post (is-city-we-have-data city)]
+                                         (if should-do-post
+                                           #(POST "/api/rules"
+                                              {:headers {"Accept" "application/transit+json"}
+                                               :params {:type "registracija-auta" :place city}
+                                               :handler (fn [response]
+                                                          (rf/dispatch [:rule/add-type "registracija-auta"])
+                                                          (rf/dispatch [:rule/add-place city])
+                                                          (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
+                                           (fn [] (rf/dispatch [:rule/add-type "registracija-auta"]))))
+                             :href (if (is-city-we-have-data (get-city-from-user user))
+                                     (str "#/usluga/registracija-auta/mesto/" (.toLowerCase (or (get-city-from-user user) " ")) "/rezultat")
+                                     "#/usluga/registracija-auta")}
+                  "registrujte auto"])]
+              [:li
+               (if (= (:type rule) "porez-na-dohodak")
+                 [:a.button.has-text-white.has-background-black
+                  {:on-click (let [city (get-city-from-user user)
+                                   should-do-post (is-city-we-have-data city)]
+                               (if should-do-post
+                                 #(POST "/api/rules"
+                                    {:headers {"Accept" "application/transit+json"}
+                                     :params {:type "porez-na-dohodak" :place city}
+                                     :handler (fn [response]
+                                                (rf/dispatch [:rule/add-type "porez-na-dohodak"])
+                                                (rf/dispatch [:rule/add-place city])
+                                                (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
+                                 (fn [] (rf/dispatch [:rule/add-type "porez-na-dohodak"]))))
+                   :href (if (is-city-we-have-data (get-city-from-user user))
+                           (str "#/usluga/porez-na-dohodak/mesto/" (.toLowerCase (or (get-city-from-user user) " ")) "/rezultat")
+                           "#/usluga/porez-na-dohodak")}
+                  "platite porez"]
+                 [:a.button
+                  {:on-click (let [city (get-city-from-user user)
+                                   should-do-post (is-city-we-have-data city)]
+                               (if should-do-post
+                                 #(POST "/api/rules"
+                                    {:headers {"Accept" "application/transit+json"}
+                                     :params {:type "porez-na-dohodak" :place city}
+                                     :handler (fn [response]
+                                                (rf/dispatch [:rule/add-type "porez-na-dohodak"])
+                                                (rf/dispatch [:rule/add-place city])
+                                                (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
+                                 (fn [] (rf/dispatch [:rule/add-type "porez-na-dohodak"]))))
+                   :href (if (is-city-we-have-data (get-city-from-user user))
+                           (str "#/usluga/porez-na-dohodak/mesto/" (.toLowerCase (get-city-from-user user)) "/rezultat")
+                           "#/usluga/porez-na-dohodak")}
+                  "platite porez"])]
+              [:li
+               (if (= (:type rule) "uknjizba-stana")
+                 [:a.button.has-text-white.has-background-black
+                  {:on-click (let [city (get-city-from-user user)
+                                   should-do-post (is-city-we-have-data city)]
+                               (if should-do-post
+                                 #(POST "/api/rules"
+                                    {:headers {"Accept" "application/transit+json"}
+                                     :params {:type "uknjizba-stana" :place city}
+                                     :handler (fn [response]
+                                                (rf/dispatch [:rule/add-type "uknjizba-stana"])
+                                                (rf/dispatch [:rule/add-place city])
+                                                (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
+                                 (fn [] (rf/dispatch [:rule/add-type "uknjizba-stana"]))))
+                   :href (if (is-city-we-have-data (get-city-from-user user))
+                           (str "#/usluga/uknjizba-stana/mesto/" (.toLowerCase (get-city-from-user user)) "/rezultat")
+                           "#/usluga/uknjizba-stana")}
+                  "uknjižite stan"]
+                 [:a.button {:on-click (let [city (get-city-from-user user)
+                                             should-do-post (is-city-we-have-data city)]
+                                         (if should-do-post
+                                           #(POST "/api/rules"
+                                              {:headers {"Accept" "application/transit+json"}
+                                               :params {:type "uknjizba-stana" :place city}
+                                               :handler (fn [response]
+                                                          (rf/dispatch [:rule/add-type "uknjizba-stana"])
+                                                          (rf/dispatch [:rule/add-place city])
+                                                          (rf/dispatch [:rule/add-result (get-in response [:rules :result])]))})
+                                           (fn [] (rf/dispatch [:rule/add-type "uknjizba-stana"]))))
+                             :href (if (is-city-we-have-data (get-city-from-user user))
+                                     (str "#/usluga/uknjizba-stana/mesto/" (.toLowerCase (get-city-from-user user)) "/rezultat")
+                                     "#/usluga/uknjizba-stana")}
+                  "uknjižite stan"])]]]]]]))
      [not-logged-in])])
 

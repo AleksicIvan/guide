@@ -2,6 +2,7 @@
   (:require
    [day8.re-frame.http-fx]
    [re-frame.core :as rf]
+   [clojure.string :as str]
    [guide-me-v2.helpers :refer [redirect!]]
    [guide-me-v2.components.answer :refer [render-answer]]
    [guide-me-v2.store.subs]
@@ -31,6 +32,6 @@
            [:div.columns.is-mobile.is-centered.is-vcentered
             [:div.column.is-one-fifth
              [:img.image.is-32x32 {:src "/img/046-office-building.svg"}]]
-            [:div.column (:place rule)]]
+            [:div.column (str/capitalize (or (:place rule) " "))]]
            [render-answer (:result rule)]]]]])
      (redirect! "/"))])
