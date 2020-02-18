@@ -1,6 +1,6 @@
 (defproject guide-me-v2 "1.0.0"
 
-  :description "The project was developed in order to pass Software Engineering Tools and Methodology exam on Software Engineering and Computer Sciences at the Faculty of Organization Sciences, University of Belgrade, Serbia, Software Engineering Master's studies."
+  :description "This project was developed in order to pass Software Engineering Tools and Methodology exam on Software Engineering and Computer Sciences at the Faculty of Organization Sciences, University of Belgrade, Serbia, Software Engineering Master's studies."
 
   :dependencies [[buddy/buddy-auth "2.2.0"]
                  [buddy/buddy-core "1.6.0"]
@@ -47,7 +47,7 @@
                  [thheller/shadow-cljs "2.8.69" :scope "provided"]]
 
   :min-lein-version "2.0.0"
-  
+
   :source-paths ["src/clj" "src/cljs" "src/cljc"]
   :test-paths ["test/clj"]
   :resource-paths ["resources" "target/cljsbuild"]
@@ -73,7 +73,7 @@
     {:target :node-test
      :output-to "target/test/test.js"
      :autorun true}}}
-  
+
   :npm-deps [[shadow-cljs "2.8.69"]
              [create-react-class "15.6.3"]
              [react "16.8.6"]
@@ -82,7 +82,7 @@
   :profiles
   {:uberjar {:omit-source true
              :prep-tasks ["compile" ["shadow" "release" "app"]]
-             
+
              :aot :all
              :uberjar-name "guide-me-v2.jar"
              :source-paths ["env/prod/clj" "env/prod/cljs"]
@@ -101,17 +101,14 @@
                                  [ring/ring-mock "0.4.0"]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.24.1"]
                                  [jonase/eastwood "0.3.5"]]
-                  
-                  
+
+
                   :source-paths ["env/dev/clj" "env/dev/cljs" "test/cljs"]
                   :resource-paths ["env/dev/resources"]
                   :repl-options {:init-ns user}
                   :injections [(require 'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!)]}
    :project/test {:jvm-opts ["-Dconf=test-config.edn"]
-                  :resource-paths ["env/test/resources"]
-                  
-                  
-                  }
+                  :resource-paths ["env/test/resources"]}
    :profiles/dev {}
    :profiles/test {}})

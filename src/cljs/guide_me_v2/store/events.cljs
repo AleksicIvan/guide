@@ -72,13 +72,11 @@
 (rf/reg-event-db
  :session/update-rule
  (fn [db [_ rule]]
-   (println "rule from reducer" rule)
    (assoc  db :session/rule rule)))
 
 (rf/reg-event-db
  :rule/add-result
  (fn [db [_ rule]]
-   (println "rule from reducer" rule)
    (assoc-in db [:rule :result] rule)))
 
 

@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html class="has-navbar-fixed-top">
-  <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>vodi§  | Pomoć na putu kroz džunglu propisa, šaltera i papira</title>
-      <script src="/js/mobile-detect.js"></script>
-  </head>
-  <body>
 
-    <div id="app">
-      <section class="section">
-        <div class="container is-fluid is-centered">
-          <div class="content">
-            <h4 class="title"> <i>vodi§</i> portal se učitava...</h4>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>vodi§ | Pomoć na putu kroz džunglu propisa, šaltera i papira</title>
+  <script src="/js/mobile-detect.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <section class="section">
+      <div class="container is-fluid is-centered">
+        <div class="content">
+          <h4 class="title"> <i>vodi§</i> portal se učitava...</h4>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+  </div>
 
-    <!-- scripts and styles -->
-    {% style "/assets/bulma/css/bulma.min.css" %}
-    {% style "/assets/material-icons/css/material-icons.min.css" %}
-    {% style "/css/screen.css" %}
+  <!-- scripts and styles -->
+  {% style "/assets/bulma/css/bulma.min.css" %}
+  {% style "/assets/material-icons/css/material-icons.min.css" %}
+  {% style "/css/screen.css" %}
 
-    <script type="text/javascript">
-        var csrfToken = "{{csrf-token}}";
-    </script>
-    <script>
-      var md = new MobileDetect(window.navigator.userAgent);
+  <script type="text/javascript">
+    var csrfToken = "{{csrf-token}}";
   </script>
-    {% script "/js/app.js" %}
-    <script type="text/javascript">
-      (function() {
-        var burger = document.querySelector('.burger');
-        var nav = document.querySelector('#'+burger.dataset.target);
-        burger.addEventListener('click', function(){
+  <script>
+    var md = new MobileDetect(window.navigator.userAgent);
+  </script>
+  {% script "/js/app.js" %}
+  <script type="text/javascript">
+    (function () {
+      var burger = document.querySelector('.burger');
+      var nav = document.querySelector('#' + burger.dataset.target);
+      burger.addEventListener('click', function () {
         burger.classList.toggle('is-active');
         nav.classList.toggle('is-active');
-        });
-      })();
-    </script>
-  </body>
-  <div class="clear"></div>
-  <footer class="footer has-background-black has-text-white has-text-centered">
-    <p>Handcrafted with &#9829; by Ivan Aleksić</p>
-    <p style="font-size: x-small;"><small>Icons made by <a style="color:white;" href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a style="color:white;" href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small></p>
-  </footer>
+      });
+    })();
+  </script>
+</body>
+<div class="clear"></div>
+<footer class="footer has-background-black has-text-white has-text-centered">
+  <p>Handcrafted with &#9829; by Ivan Aleksić</p>
+  <p style="font-size: x-small;"><small>Icons made by <a style="color:white;"
+        href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a style="color:white;"
+        href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></small></p>
+</footer>
+
 </html>

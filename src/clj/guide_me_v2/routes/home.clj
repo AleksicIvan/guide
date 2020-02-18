@@ -20,11 +20,9 @@
   [""
    {:middleware [middleware/wrap-csrf
                  middleware/wrap-formats
-                 middleware/wrap-restricted
-                 ]}
+                 middleware/wrap-restricted]}
    ["/usluga/:tip" {:get where-page}]
-   ["/usluga/:tip/mesto/:mesto/rezultat" {:get result-page}]
-   ])
+   ["/usluga/:tip/mesto/:mesto/rezultat" {:get result-page}]])
 
 (defn home-route []
   [""

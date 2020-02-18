@@ -16,20 +16,18 @@
         [:nav.breadcrumb
          [:ul#breadcrumb-ul
           [:li
-           [:a#section-breadcrumb-a-first.section-breadcrumb-a {:href "#/"} 
-            "Usluga" 
-            [my-blank-component] 
+           [:a#section-breadcrumb-a-first.section-breadcrumb-a {:href "#/"}
+            "Usluga"
+            [my-blank-component]
             [:img.image.is-16x16 {:src "/img/009-file.svg"}]]]
           (if (get-in route [:path-params :tip])
             [:li
-             [:a.section-breadcrumb-a {:href (str "#/usluga/" (get-in route [:path-params :tip]))} 
-              "Mesto" [my-blank-component] 
+             [:a.section-breadcrumb-a {:href (str "#/usluga/" (get-in route [:path-params :tip]))}
+              "Mesto" [my-blank-component]
               [:img.image.is-16x16 {:src "/img/046-office-building.svg"}]]]
             nil)
           (if (and (get-in route [:path-params :tip]) (get-in route [:path-params :mesto]))
             [:li
              [:a.section-breadcrumb-a {:href (str "#/usluga/" (get-in route [:path-params :tip]) "/mesto" (get-in route [:path-params :place]))} "Rezultat"]]
-            nil)]]
-        ]
-       ])
+            nil)]]]])
     nil))

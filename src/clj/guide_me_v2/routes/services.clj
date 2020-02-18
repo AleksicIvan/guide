@@ -65,7 +65,7 @@
      {:get (swagger-ui/create-swagger-ui-handler
             {:url "/api/swagger.json"
              :config {:validator-url nil}})}]]
-   
+
    ["/rules"
     {:post {:parameters
             {:body

@@ -5,7 +5,6 @@
    [re-frame.core :as rf]
    [goog.events :as events]
    [goog.history.EventType :as HistoryEventType]
-  ;  [markdown.core :refer [md->html]]
    [guide-me-v2.ajax :as ajax]
    [guide-me-v2.components.navbar :refer [navbar]]
    [guide-me-v2.components.breadcrumbs :refer [breadcrumbs]]
@@ -45,11 +44,11 @@
 (defn hook-browser-navigation! []
   (doto (History.)
     (events/listen
-      HistoryEventType/NAVIGATE
-      (fn [event]
-        (let [uri (or (not-empty (string/replace (.-token event) #"^.*#" "")) "/")]
-          (rf/dispatch
-           [:navigate (reitit/match-by-path router uri)]))))
+     HistoryEventType/NAVIGATE
+     (fn [event]
+       (let [uri (or (not-empty (string/replace (.-token event) #"^.*#" "")) "/")]
+         (rf/dispatch
+          [:navigate (reitit/match-by-path router uri)]))))
     (.setEnabled true)))
 
 ;; -------------------------

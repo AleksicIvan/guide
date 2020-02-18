@@ -12,11 +12,11 @@
 
 ;; log uncaught exceptions in threads
 (Thread/setDefaultUncaughtExceptionHandler
-  (reify Thread$UncaughtExceptionHandler
-    (uncaughtException [_ thread ex]
-      (log/error {:what :uncaught-exception
-                  :exception ex
-                  :where (str "Uncaught exception on" (.getName thread))}))))
+ (reify Thread$UncaughtExceptionHandler
+   (uncaughtException [_ thread ex]
+     (log/error {:what :uncaught-exception
+                 :exception ex
+                 :where (str "Uncaught exception on" (.getName thread))}))))
 
 (def cli-options
   [["-p" "--port PORT" "Port number"
@@ -25,10 +25,10 @@
 (mount/defstate ^{:on-reload :noop} http-server
   :start
   (http/start
-    (-> env
-        (assoc  :handler (handler/app))
-        (update :io-threads #(or % (* 2 (.availableProcessors (Runtime/getRuntime)))))
-        (update :port #(or (-> env :options :port) %))))
+   (-> env
+       (assoc  :handler (handler/app))
+       (update :io-threads #(or % (* 2 (.availableProcessors (Runtime/getRuntime)))))
+       (update :port #(or (-> env :options :port) %))))
   :stop
   (http/stop http-server))
 
@@ -72,4 +72,4 @@
       (System/exit 0))
     :else
     (start-app args)))
-  
+

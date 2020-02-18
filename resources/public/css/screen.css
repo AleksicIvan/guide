@@ -4,6 +4,7 @@ body {
   color: white;
   margin-bottom: 30px;
 }
+
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
@@ -15,6 +16,7 @@ body {
        url(/assets/material-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
        url(/assets/material-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;

@@ -23,14 +23,14 @@
   [Place (= "Beograd" name)]
   [Type (= "porez-na-dohodak" label)]
   =>
-  (insert!( ->RuleResult 112)))
+  (insert! (->RuleResult 112)))
 
 (defrule is-place-belgrade-is-type-registracija-auta
   "Place is Belgrade, type is registracija-auta"
   [Place (= "Beograd" name)]
   [Type (= "registracija-auta" label)]
   =>
-  (insert!( ->RuleResult 111)))
+  (insert! (->RuleResult 111)))
 
 ; Uzice
 (defrule is-place-uzice-is-type-uknjizba-stana
@@ -81,7 +81,7 @@
   [?rule-result <- RuleResult])
 
 
-(defn show-answer 
+(defn show-answer
   "Get result thruth if type and place facts are both inserted into session"
   [session]
   (query session get-answer))

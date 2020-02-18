@@ -75,7 +75,6 @@
      error (r/atom nil)
      do-register
      (fn [_]
-       (println "register data" @fields)
        (reset! error nil)
        (POST "/api/register"
          {:headers {"Accept" "application/transit+json"}

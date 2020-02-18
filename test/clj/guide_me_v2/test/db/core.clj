@@ -36,5 +36,4 @@
             :is_admin nil
             :email "pera.peric@example.com"
             :pass "pass"}
-           (db/get-user-for-auth* t-conn {:login "pera.peric"})))
-    ))
+           (db/get-user-for-auth* t-conn {:login "pera.peric"})))))
