@@ -4,7 +4,7 @@ Vodi§ is a lightweight represenatation of an expert system that should provide 
 
 Basically, user starts with a  login/register screen, after which they are given a choice of selecting type of service, followed by the option to choose a city/town. In the end after expert system checks its knowledge base and delievers a rule, user is presented with an answer/result page containing required information.
 
-Screen shots of app flow can be found [here][1].
+Screen shots and video of app flow can be found [here][1].
 
 An excellent lecture on a rule-based expert system by late MIT Professor Patrick H. Winston is available [here][3]
 
